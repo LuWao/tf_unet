@@ -17,10 +17,15 @@ To use Tensorflow Unet in a project::
 	#verification
 	...
 	
+	#prepare test images
+	data = image_util.ImageDataProvider("fishes/test/*.tif")
+	
 	prediction = net.predict(path, data)
 	
+	#what's the label? from prediction?
 	unet.error_rate(prediction, util.crop_to_shape(label, prediction.shape))
 	
+	#too from prediction
 	img = util.combine_img_prediction(data, label, prediction)
 	util.save_image(img, "prediction.jpg")
 	
