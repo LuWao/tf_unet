@@ -22,11 +22,11 @@ To use Tensorflow Unet in a project::
 	
 	prediction = net.predict(path, data)
 	
-	#what's the label? from prediction?
-	unet.error_rate(prediction, util.crop_to_shape(label, prediction.shape))
+	#probably, it's label from test data; all operation below just for examples with answer
+	unet.error_rate(prediction, util.crop_to_shape(data.label, prediction.shape))
 	
-	#too from prediction
-	img = util.combine_img_prediction(data, label, prediction)
+	#correct reference to labels?
+	img = util.combine_img_prediction(data, data.label, prediction)
 	util.save_image(img, "prediction.jpg")
 	
 Keep track of the learning progress using *Tesorboard*. **tf_unet** automatically outputs relevant summaries.
